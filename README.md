@@ -1,0 +1,1 @@
+## This is our awesome attendance tracker app
