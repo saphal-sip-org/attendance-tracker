@@ -20,14 +20,14 @@ router.post("/login", async (req, res) => {
     //check if teacher exists
     if(!teacher){
         res.status(400).send({
-            err_code: "User_don't exists",
+            err_code: "USER_NOT_EXISTS",
             message: "User don't exists"
         })
         return;
     };
 
     //assign password in variable
-    const teacherPassword = await Teacher.password;
+    const teacherPassword = await teacher.password;
 
     // compare passwords is correct/incorrect
     const isPasswordCorrect = await bcrypt.compare(password, teacherPassword);
@@ -35,7 +35,7 @@ router.post("/login", async (req, res) => {
     //if password is incorrect then send error message
     if(!isPasswordCorrect) {
         res.status(400).send({
-            err_code: "User_password_incorrect",
+            err_code: "USER_PASSWORD_INCORRECT",
             message: "User password incorrect"
         })
         return;
@@ -47,7 +47,7 @@ router.post("/login", async (req, res) => {
         contact: Teacher.contact,
         userName: Teacher.userName,
         coursesTaught: Teacher.coursesTaught
-    }, process.env.TEACHER_JWT_TOKEN, {expiresIn: "2hr" });
+    }, process.env.TEACHER_JWT_TOKEN, {expiresIn: "2h" });
 
     //send information to the user to notify
     res.send({
