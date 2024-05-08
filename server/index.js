@@ -2,15 +2,24 @@ import express from "express";
 import cors from "cors";
 import teacherRouter from "./routers/teacher.js"
 import connectMongoDB from "./modules/connection.js";
+import dotenv from "dotenv";
 
-const PORT = process.env.PORT || 5001;
 const app = express();
 
-//connecting Database
-connectMongoDB("mongodb+srv://milangautam071440304:aUAFhl7PVWcI2zdJ@cluster0.eqfusd6.mongodb.net//attendance_mgmt");
-
+//middleware setup
 app.use(express.json());
 app.use(cors());
+
+dotenv.config();
+
+//connection to dotenv
+const PORT = process.env.PORT || 5001;
+const URL = process.env.MONGO_URL;
+
+//connecting Database
+connectMongoDB(URL);
+
+
 
 async function main() {
 
