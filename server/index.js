@@ -1,15 +1,15 @@
 import express from "express";
 import cors from "cors";
 import teacherRouter from "./routers/teacher.js"
-import connectMongoDB from "./modules/connection";
+import connectMongoDB from "./modules/connection.js";
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 const app = express();
 
 //connecting Database
-connectMongoDB("mongodb://localhost:27017/attendance_mgmt");
+connectMongoDB("mongodb+srv://milangautam071440304:aUAFhl7PVWcI2zdJ@cluster0.eqfusd6.mongodb.net//attendance_mgmt");
 
-app.use(express.json())
+app.use(express.json());
 app.use(cors());
 
 async function main() {

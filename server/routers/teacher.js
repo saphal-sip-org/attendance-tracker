@@ -1,6 +1,6 @@
 import express from "express";
 import Jwt  from "jsonwebtoken";
-import { Teacher } from "./models/schemas/schemas.js";
+import { Teacher } from "../models/schemas/schemas.js";
 import { config } from "dotenv";
 
 config();
@@ -29,16 +29,21 @@ router.post("/register", async(req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hasedPassword = await bcrypt.hash(password, salt);
 
+        //register & create new teacher 
         const newTeacher = new teacher({
             userName,
             password: hasedPassword,
-        })
-        const saveTeacher = await newTeacher.save();
+        });
+
+        //save new teacher in database
+        const savedTeacher = await newTeacher.save();
 
         //send teachers data
         res.send({
-            userName: saveTeacher.userName,
-            password: saveTeacher.password
+            name: savedTeacher.name,
+            contact: savedTeacher.contact,
+            userName: savedTeacher.userName,
+            coursesTaught: savedTeacher.coursesTaught
         });
         console.error("something error", error)
     } catch (error) {
@@ -94,7 +99,8 @@ router.post("/login", async (req, res) => {
         name: teacher.name,
         contact: teacher.contact,
         userName: teacher.userName,
-        coursesTaught: teacher.coursesTaught
+        coursesTaught: teacher.coursesTaught,
+        token
 
     });
 
@@ -106,3 +112,4 @@ router.post("/login", async (req, res) => {
 
 //exporting teacher router
 export default router;
+export {router};
