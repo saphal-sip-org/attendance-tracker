@@ -3,11 +3,11 @@ import mongoose, { Schema } from "mongoose";
 const studentSchema = mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     userName: {
         type: String,
-        require: true
+        required: true
     },
     course: {
         type: Schema.Types.ObjectId,

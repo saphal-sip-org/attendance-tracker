@@ -7,7 +7,47 @@ config();
 
 const router = express.Router();
 
-router.post("/register", (req, res))
+// teacher for register
+router.post("/register", async(req, res) => {
+    try {
+        // receive  username and password from teacher
+        const { userName, password} = req.body;
+        
+        //check  if the teacher already exist  
+        const  teacher = await  Teacher.findOne({userName: userName});
+
+        //if taecher is already exist send message
+        if(teacher){
+            res.status(400).send({
+                err_code:"USER_ALREADY_EXIST",
+                message:"User already exist",
+            });
+            return;
+        }
+
+         //teacher password bcrypt 
+        const salt = await bcrypt.genSalt(10);
+        const hasedPassword = await bcrypt.hash(password, salt);
+
+        const newTeacher = new teacher({
+            userName,
+            password: hasedPassword,
+        })
+        const saveTeacher = await newTeacher.save();
+
+        //send teachers data
+        res.send({
+            userName: saveTeacher.userName,
+            password: saveTeacher.password
+        });
+        console.error("something error", error)
+    } catch (error) {
+        console.log("errors occurs")
+    }
+
+});
+
+
 // router for teacher to login
 router.post("/login", async (req, res) => {
     try {
@@ -24,7 +64,7 @@ router.post("/login", async (req, res) => {
             message: "User don't exists"
         })
         return;
-    };
+    }
 
     //assign password in variable
     const teacherPassword = await teacher.password;
@@ -56,7 +96,7 @@ router.post("/login", async (req, res) => {
         userName: teacher.userName,
         coursesTaught: teacher.coursesTaught
 
-    })
+    });
 
     console.error("something error", error);
     } catch (error) {

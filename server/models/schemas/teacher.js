@@ -9,7 +9,7 @@ const teacherSchema = mongoose.Schema({
     },
     userName: {
         type: String,
-        require: true
+        required: true
     },
     password: {
         type: String,

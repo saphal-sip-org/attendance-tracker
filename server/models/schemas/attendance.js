@@ -11,11 +11,11 @@ const attendanceSchema = mongoose.Schema({
     },
     date: {
         type: () => Date.now(),
-        require: true
+        required: true
     },
     isPresent: {
         type: Boolean,
-        require: true
+        required: true
     }
 })
 
