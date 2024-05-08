@@ -1,9 +1,9 @@
 import express from "express";
 import Jwt  from "jsonwebtoken";
 import { Teacher } from "../models/schemas/schemas.js";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 
-config();
+dotenv.config();
 
 const router = express.Router();
 
