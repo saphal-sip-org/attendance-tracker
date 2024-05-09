@@ -3,7 +3,8 @@ const Button = ({
     label,
 }) => {
     return(
-        <div>
+        <div className="
+        ">
             {/* <Button type="button" oncClick={handlesubmit} > </Button> */}
             <button type="button" onClick={clickhandler} 
             className="
@@ -13,6 +14,7 @@ const Button = ({
             border-gray-300
             text-sm rounded-lg
             p-2
+            w-full
             font-bold
             hover:bg-bg-btn-secondary 
             ">{label}</button>
