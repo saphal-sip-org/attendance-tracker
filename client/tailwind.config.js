@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-btn-primary': '#21aafc',
+        'bg-btn-primary': '#6c63ff',
         'bg-btn-secondary': '#20A4F3'
       },
       keyframes: {

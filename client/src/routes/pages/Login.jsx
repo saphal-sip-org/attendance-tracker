@@ -21,9 +21,9 @@ function Login() {
 
 
   return (
-    <div className="w-screen h-screen flex  items-center justify-center bg-gray-100 gap-32">
+    <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
       <img width={400} className='me-10 ' src={LoginPic} alt="" srcset="" />
-      <form className="flex flex-col animate-float justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg">
+      <form className="flex flex-col  justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg">
 
         <div className='
         flex flex-col gap-2'>
@@ -31,9 +31,9 @@ function Login() {
             font-bold text-xl
             text-slate-900 text-center
             
-            '>Login</h1>
+            '>Welcome Back!</h1>
           <div className='border-b-2
-            border-slate-900'></div>
+            border-gray-300'></div>
 
         </div>
         <Input inputchangeHandler={e => setUsername(e.target.value)} inputValue={username} label={"Username"} />
