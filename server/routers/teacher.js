@@ -76,7 +76,7 @@ router.post("/login", async (req, res) => {
         if(!teacher){
             res.status(400).send({
                 err_code: "USER_NOT_EXISTS",
-                message: "User don't exists"
+                message: "User doesn't exists"
             })
             return;
         }
@@ -91,7 +91,7 @@ router.post("/login", async (req, res) => {
         if(!isPasswordCorrect) {
             res.status(400).send({
                 err_code: "USER_PASSWORD_INCORRECT",
-                message: "User password incorrect"
+                message: "User password is incorrect"
             })
             return;
         };
@@ -114,7 +114,7 @@ router.post("/login", async (req, res) => {
 
         });
 
-    console.log("login successfully")
+    console.log("Login successfully")
     } catch (error) {
         console.error("error occurs", error);
     }
