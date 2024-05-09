@@ -20,8 +20,14 @@ export default {
       animation: {
         float: 'float 5s ease-in-out infinite'
       }
+  
     },
 
   },
   plugins: [],
+  varients:{
+    extends: {
+      display: ["focus-group"]
+    }
+  }
 }
