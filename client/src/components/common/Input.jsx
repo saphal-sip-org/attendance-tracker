@@ -11,7 +11,7 @@ const Input = ({
         <div>
            
             <div className="flex flex-col mt-">
-                <span>{label}</span>
+                {/* <span></span> */}
                 <input type="text" className="bg-gray-50 border 
                     outline-none
                     border-gray-300
