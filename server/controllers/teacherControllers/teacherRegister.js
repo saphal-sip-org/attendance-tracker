@@ -50,7 +50,7 @@ router.post("/register", async(req, res) => {
             userName: savedTeacher.userName,
             coursesTaught: savedTeacher.coursesTaught
         });
-        console.log("Data registered successfully")
+        console.log("User registered successfully")
     } catch (error) {
         console.log("errors occurs: ", error)
     }
