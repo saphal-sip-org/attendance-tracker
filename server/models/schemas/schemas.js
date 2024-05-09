@@ -1,6 +1,6 @@
-import Student from "./student";
-import Attendance from "./attendance";
-import Teacher from "./teacher";
-import Course from "./course";
+import Student from "./student.js";
+import Attendance from "./attendance.js";
+import Teacher from "./teacher.js";
+import Course from "./course.js";
 
 export {Student, Attendance, Teacher, Course};
