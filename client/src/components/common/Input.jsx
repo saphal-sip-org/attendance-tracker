@@ -17,8 +17,10 @@ const Input = ({
                     border-gray-300
                     text-gray-900 
                     text-sm rounded-lg 
-                    block p-2.5
+                    block p-2.5  
                     " placeholder={label} required />
+
+
             </div>
 
         </div>
