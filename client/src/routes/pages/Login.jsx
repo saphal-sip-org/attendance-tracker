@@ -42,7 +42,7 @@ function Login() {
           <span className='
             text-bg-btn-primary
             ml-1
-            '>forget Password?</span>
+            '>Forget Password?</span>
 
         </div>
         <div className='
