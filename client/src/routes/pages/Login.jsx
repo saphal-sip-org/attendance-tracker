@@ -22,8 +22,8 @@ function Login() {
 
   return (
     <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
-      <img width={400} className='me-10 ' src={LoginPic} alt="" srcset="" />
-      <form className="flex flex-col  justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg">
+      <img width={400} className='hidden md:block w-[200px] h-[200px] lg:block lg:w-[300px] lg:h-[300px]' src={LoginPic} alt="" />
+      <form className="flex flex-col justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg md:w-72">
 
         <div className='
         flex flex-col gap-2'>
