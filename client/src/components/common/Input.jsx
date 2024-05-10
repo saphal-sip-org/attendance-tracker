@@ -3,8 +3,12 @@
 const Input = ({
     label,
     inputchangeHandler,
-    inputValue
+    inputValue,
+    type,
 }) => {
+    
+
+    
 
     return (
 
@@ -12,7 +16,7 @@ const Input = ({
            
             <div className="flex flex-col mt-">
                 {/* <span></span> */}
-                <input type="text" className="bg-gray-50 border 
+                <input type={`${type ? "text" : "password"}`} className="bg-gray-50 border 
                     outline-none
                     border-gray-300
                     text-gray-900 

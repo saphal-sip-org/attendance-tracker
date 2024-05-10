@@ -14,7 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
 
-  
+
 
   return (
 
@@ -32,9 +32,9 @@ function Login() {
             border-gray-300'></div>
 
         </div>
-        <Input inputchangeHandler={e => setUsername(e.target.value)} inputValue={username} label={"Username"} />
+        <Input inputchangeHandler={e => setUsername(e.target.value)} inputValue={username} type ={true} label={"Username"} />
         <div className='flex flex-col gap-1'>
-          <Input inputchangeHandler={e => setPassword(e.target.value)} inputValue={password} label={"Password"} />
+          <Input inputchangeHandler={e => setPassword(e.target.value)} inputValue={password} type={false} label={"Password"} />
           <span className='
             text-bg-btn-primary
             ml-1
@@ -46,7 +46,7 @@ function Login() {
           w-full' />
         </div>
         <div className='
-          lg:flex lg:flex-row sm:flex-row  md:flex-col gap-0 sm:gap-2 md:gap-0'>
+          md:flex flex-col lg:flex-row gap-0'>
           <span className='
             text-gray-500'>Don't have an account yet?</span>
           <NavLink className='
