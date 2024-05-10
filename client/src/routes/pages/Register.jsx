@@ -12,6 +12,8 @@ function Register() {
   const [password, setPassword] = useState("");
 
 
+
+  
   return (
     <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
       <img width={400} className='hidden lg:block w-[300px] h-[300px]' src={RegisterPic} alt="" />
