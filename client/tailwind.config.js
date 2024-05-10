@@ -24,4 +24,9 @@ export default {
 
   },
   plugins: [],
+  varients:{
+    extends: {
+      display: ["focus-group"]
+    }
+  }
 }
