@@ -3,22 +3,19 @@ const Button = ({
     label,
 }) => {
     return(
-        <div className="
-        ">
-            {/* <Button type="button" oncClick={handlesubmit} > </Button> */}
-            <button type="button" onClick={clickhandler} 
+        <>
+            <button onClick={clickhandler} 
             className="
             border
             text-gray-100
             bg-bg-btn-primary
             border-gray-300
-            text-sm rounded-lg
-            p-2
-            w-full
-            font-bold
+            rounded-3xl
+            py-2 px-6
+            font-bold text-lg
             hover:bg-bg-btn-secondary 
             ">{label}</button>
-        </div>
+        </>
     )
 }
 

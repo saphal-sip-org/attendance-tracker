@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useMemo, useState } from "react";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input"
@@ -13,24 +13,16 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-
-
-
-
-
-
   return (
-    <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
-      <img width={400} className='hidden md:block w-[200px] h-[200px] lg:block lg:w-[300px] lg:h-[300px]' src={LoginPic} alt="" />
-      <form className="flex flex-col justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg md:w-72">
+    <div className="w-screen min-h-screen animate-float flex items-center justify-center gap-32 bg-gray-100 overflow-y-hidden">
+      <img width={400} className='hidden md:block w-48 h-auto lg:block lg:w-80 lg:h-80' src={LoginPic} alt="LogIn Image" />
+      <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-8 shadow-lg md:w-72  lg:w-80 xl:w-96">
 
         <div className='
         flex flex-col gap-2'>
           <h1 className='
             font-bold text-xl
             text-slate-900 text-center
-            
             '>Welcome Back!</h1>
           <div className='border-b-2
             border-gray-300'></div>
@@ -45,23 +37,17 @@ function Login() {
             '>forget Password?</span>
 
         </div>
-        <div className='
-        w-full
-        border'>
-
+        <div className='w-full flex justify-center items-center'>
           <Button label={"Login"} className='' />
         </div>
         <div className='
-          flex gap-1'>
+          flex flex-col sm:flex-row  md:flex-col gap-0 sm:gap-2 md:gap-0'>
           <span className='
             text-gray-500'>Don't have an account yet?</span>
-          <Link className='
-            text-bg-btn-primary' to={"/register"}>Register now</Link>
+          <NavLink className='
+            text-bg-btn-primary' to={"/register"}>Register now</NavLink>
 
         </div>
-
-
-        {/* </div> */}
 
       </form>
 
