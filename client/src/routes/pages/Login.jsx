@@ -14,6 +14,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
+
     <div className="w-screen min-h-screen animate-float flex items-center justify-center gap-32 bg-gray-100 overflow-y-hidden">
       <img width={400} className='hidden md:block w-48 h-auto lg:block lg:w-80 lg:h-80' src={LoginPic} alt="LogIn Image" />
       <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-8 shadow-lg md:w-72  lg:w-80 xl:w-96">
