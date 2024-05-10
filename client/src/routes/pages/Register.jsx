@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input"
 import LoginPic from "../../images/loginp.svg"
+import RegisterPic from "../../images/login.svg"
 
 function Register() {
 
@@ -14,8 +15,8 @@ function Register() {
 
 
   return (
-    <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
-      <img width={400} className='hidden lg:block w-[300px] h-[300px]' src={LoginPic} alt="" />
+    <div className="w-screen h-screen animate-float flex flex-row-reverse items-center justify-center bg-gray-100 gap-32">
+      <img width={400} className='hidden lg:block w-[300px] h-[300px]' src={RegisterPic} alt="" />
       <form className="flex flex-col justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg">
         <div className='
         flex flex-col gap-2'>
@@ -37,7 +38,8 @@ function Register() {
         <div className='
         w-full
         border'>
-          <Button label={"Login"} className='' />
+          <Button label={"Register"} className='
+          w-full' />
         </div>
         <div className='
           flex gap-1'>
