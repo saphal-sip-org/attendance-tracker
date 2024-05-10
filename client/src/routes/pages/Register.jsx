@@ -8,15 +8,15 @@ import RegisterPic from "../../images/login.svg"
 
 function Register() {
 
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
 
 
   return (
-    <div className="w-screen h-screen animate-float flex flex-row-reverse items-center justify-center bg-gray-100 gap-32">
-      <img width={400} height={300} className='hidden lg:block w-[300px] h-[300px]' src={RegisterPic} alt="" />
-      <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-8 shadow-lg md:w-72  lg:w-80 xl:w-96">
+    <div className="w-screen min-h-screen animate-float flex flex-row-reverse items-center justify-center bg-gray-100 gap-32 overflow-hidden">
+      <img width={400} className='hidden md:block w-48 h-auto lg:block lg:w-80 lg:h-80' src={RegisterPic} alt="" />
+      <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-6 shadow-lg">
         <div className='
         flex flex-col gap-2'>
           <h1 className='
@@ -26,7 +26,7 @@ function Register() {
           <div className='border-b-2
             border-gray-300'></div>
         </div>
-        <Input inputchangeHandler={e => setUsername(e.target.value)} inputValue={username} type={true} label={"Username"} />
+        <Input inputchangeHandler={e => setUserName(e.target.value)} inputValue={userName} type={true} label={"UserName"} />
         <div className='flex flex-col gap-1'>
           <Input inputchangeHandler={e => setPassword(e.target.value)} inputValue={password} type={false} label={"Password"} />
           <span className='flex items-center gap-1 mt-3'>
@@ -37,16 +37,17 @@ function Register() {
         </div>
         <div className='
         w-full
+        flex justify-center
         '>
           <Button label={"Register"} className='
           w-full' />
         </div>
-        <div className='
+        <div className='gap-1 
          md:flex md:flex-col lg:flex lg:flex-row'>
           <span className='
             text-gray-500'>Already have an account?</span>
           <Link className='
-            text-bg-btn-primary' to={"/login"}>Login here</Link>
+            text-color-primary' to={"/login"}>Login here</Link>
         </div>
       </form>
     </div>

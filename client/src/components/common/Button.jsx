@@ -1,7 +1,7 @@
 const Button = ({
     clickhandler,
     label,
-    className
+    addClass
 }) => {
     return(
         <>
@@ -9,13 +9,13 @@ const Button = ({
             className={`
             border
             text-gray-100
-            bg-bg-btn-primary
+            bg-color-primary
             border-gray-300
             rounded-3xl
             py-2 px-6
             font-bold text-lg
-            hover:bg-bg-btn-secondary 
-            ${className}
+            hover:bg-color-secondary 
+            ${addClass}
             `}>{label}</button>
         </>
     )

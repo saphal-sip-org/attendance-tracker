@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        'bg-btn-primary': '#6c63ff',
-        'bg-btn-secondary': '#20A4F3'
+        'color-primary': '#6c63ff',
+        'color-secondary': '#20A4F3',
+        'color-danger': '#ff3366',
+        'color-black': '#011627',
+        'color-white': '#f6f7f8'
       },
       keyframes: {
         float: {
