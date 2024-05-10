@@ -10,7 +10,7 @@ import LoginPic from "../../images/loginp.svg"
 
 function Login() {
 
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
 
@@ -20,7 +20,7 @@ function Login() {
 
     <div className="w-screen min-h-screen animate-float flex items-center justify-center gap-32 bg-gray-100 overflow-y-hidden">
       <img width={400} className='hidden md:block w-48 h-auto lg:block lg:w-80 lg:h-80' src={LoginPic} alt="LogIn Image" />
-      <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-8 shadow-lg md:w-72  lg:w-80 xl:w-96">
+      <form className="flex flex-col justify-between h-auto w-96 px-4 py-8 relative bg-white rounded-xl gap-6 shadow-lg">
 
         <div className='
         flex flex-col gap-2'>
@@ -32,7 +32,7 @@ function Login() {
             border-gray-300'></div>
 
         </div>
-        <Input inputchangeHandler={e => setUsername(e.target.value)} inputValue={username} type ={true} label={"Username"} />
+        <Input inputchangeHandler={e => setUserName(e.target.value)} inputValue={userName} type ={true} label={"UserName"} />
         <div className='flex flex-col gap-1'>
           <Input inputchangeHandler={e => setPassword(e.target.value)} inputValue={password} type={false} label={"Password"} />
           <span className='
@@ -43,14 +43,14 @@ function Login() {
         </div>
         <div className='w-full flex justify-center items-center'>
           <Button label={"Login"} className='
-          w-full' />
+          w-full'/>
         </div>
         <div className='
-          md:flex flex-col lg:flex-row gap-0'>
+          md:flex flex-col lg:flex-row gap-1'>
           <span className='
             text-gray-500'>Don't have an account yet?</span>
           <NavLink className='
-            text-bg-btn-primary' to={"/register"}>Register now</NavLink>
+            text-color-primary' to={"/register"}>Register now</NavLink>
 
         </div>
 

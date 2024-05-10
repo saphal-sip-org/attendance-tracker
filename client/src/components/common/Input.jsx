@@ -1,4 +1,4 @@
-
+import React, { useState } from "react";
 
 const Input = ({
     label,
@@ -6,29 +6,33 @@ const Input = ({
     inputValue,
     type,
 }) => {
-    
-
-    
 
     return (
-
-        <div>
-           
-            <div className="flex flex-col mt-">
-                {/* <span></span> */}
-                <input type={`${type ? "text" : "password"}`} className="bg-gray-50 border 
+        <>
+            <div className="flex flex-col mt-4 relative">
+                <input type={`${type? "text" : "password"}`} className="bg-gray-100 
                     outline-none
-                    border-gray-300
                     text-gray-900 
-                    text-sm rounded-lg 
-                    block p-2.5  
-                    " placeholder={label} required />
+                    border border-gray-200
+                    text-lg rounded-lg p-2.5  
+                    peer" required />
 
-
+                <span 
+                    className={` absolute
+                            text-gray-500 
+                            transition-all 
+                            flex
+                            peer-focus:-translate-y-7
+                            peer-placeholder-shown:-translate-y-0
+                            ml-2.5
+                            mt-4
+                            pointer-events-none
+                            peer-[:not(:placeholder-shown)]:text-sm
+                            `}>
+                                {label}
+                </span>
             </div>
-
-        </div>
-
+        </>
     );
 }
 
