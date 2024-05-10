@@ -13,10 +13,47 @@ function Register() {
 
 
 
+  async function handlesubmit() {
+
+    const payload = {
+      username,
+      password
+    }
+
+    const response = await fetch("http://localhost:5000/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const res = response.json();
+
+    if (response.status != 200) {
+
+      //Erorr handling for null username
+      if (res.err_code == "USER_NAME_REQUIRED") {
+        console.log("Please, Enter the username!");
+      }
+
+      //Error handling for already existing user
+      if (res.err_code == "USER_ALREADY_EXIST") {
+        console.log("User Already Exist");
+      }
+      return;
+    }
+    console.log("Registered Successfully")
+  }
+
+
+
+
+
   return (
     <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
       <img width={400} className='hidden lg:block w-[300px] h-[300px]' src={LoginPic} alt="" />
-      <form className="flex flex-col justify-between h-[50%] w-96 p-5 relative bg-white rounded-xl shadow-lg">
+      <form className="flex flex-col justify-between h-80 w-96 p-5 relative bg-white rounded-xl shadow-lg">
         <div className='
         flex flex-col gap-2'>
           <h1 className='
@@ -37,7 +74,7 @@ function Register() {
         <div className='
         w-full
         border'>
-          <Button label={"Login"} className='' />
+          <Button label={"Register"} clickhandler={handlesubmit} className='' />
         </div>
         <div className='
           flex gap-1'>

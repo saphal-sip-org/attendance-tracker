@@ -10,6 +10,7 @@ import LoginPic from "../../images/loginp.svg"
 
 function Login() {
 
+  //
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +24,7 @@ function Login() {
   return (
     <div className="w-screen h-screen animate-float flex  items-center justify-center bg-gray-100 gap-32">
       <img width={400} className='hidden md:block w-[200px] h-[200px] lg:block lg:w-[300px] lg:h-[300px]' src={LoginPic} alt="" />
-      <form className="sm:flex sm:flex-col sm:justify-between md:w-72 flex flex-col justify-between h-[50%] lg:w-96 p-5 relative bg-white rounded-xl shadow-lg">
+      <form className="sm:flex sm:flex-col sm:justify-between md:w-72 flex flex-col justify-between h-80 lg:w-96 p-5 relative bg-white rounded-xl shadow-lg">
 
         <div className='
         flex flex-col gap-2'>
