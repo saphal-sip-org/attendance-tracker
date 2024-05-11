@@ -3,7 +3,8 @@ import mongoose, { Schema } from "mongoose";
 const permissionSchema = new mongoose.Schema({
     user_id : {
         type : mongoose.Schema.Types.ObjectId,
-        required : true
+        required : true,
+        ref : "User"
     },
     permission : [{
         permission_name : String,

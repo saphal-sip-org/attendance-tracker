@@ -1,11 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
-const teacherSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     name: {
         type: String
-    },
-    contact: {
-        type: Number
     },
     userName: {
         type: String,
@@ -15,11 +12,18 @@ const teacherSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    contact: {
+        type: Number
+    },
     coursesTaught: {
         type: Schema.Types.ObjectId,
         ref: "Course"
+    },
+    role : {
+        type : Number,
+        default : 0  //0-noraml(student) teacher-1 adim-2
     }
 })
 
-export const Teacher = mongoose.model("Teacher", teacherSchema);
-export default Teacher;
+export const User = mongoose.model("User", userSchema);
+export default User;
