@@ -24,7 +24,7 @@ connectMongoDB(URL);
 async function main() {
 
     // api teacher router
-    app.use("/api/teacher", teacherRouter);
+    app.use("/api", teacherRouter);
     
     //listening at the port
     app.listen(PORT, () => console.log("Server listen at port", PORT));

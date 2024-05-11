@@ -1,7 +1,7 @@
 import express from "express";
 import Jwt  from "jsonwebtoken";
 // import { Teacher } from "../models/schemas/schemas.js";
-import Teacher from "../../models/schemas/teacher.js"
+import Teacher from "../models/schemas/teacher.js"
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 const router = express.Router();

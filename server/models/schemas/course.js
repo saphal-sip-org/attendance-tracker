@@ -12,7 +12,8 @@ const courseSchema = mongoose.Schema({
     },
     teacher: { 
         type: Schema.Types.ObjectId,
-        ref: 'Teacher' },
+        ref: 'Teacher' 
+    },
     students: [{ 
         type: Schema.Types.ObjectId,
         ref: 'Student' 
