@@ -1,12 +1,25 @@
 import express from "express";
 import User from "../models/schemas/user.js"
 import bcrypt from "bcrypt";
+import { validationResult } from "express-validator";
 
 const router = express.Router();
 
 // user for register
 router.post("/register", async(req, res) => {
     try {
+        // check for error validation
+        const errors = validationResult(req);
+
+        //if error then throw message
+        if(!errors.isEmpty()) {
+            return res.status(200).send({
+                success : false,
+                message : "Errors",
+                errors : errors.array()
+            })
+        };
+
         // receive  username and password from user
         const { userName, password } = req.body;
 
@@ -55,7 +68,11 @@ router.post("/register", async(req, res) => {
         console.error("Error occurs:", error);
     }
     } catch (error) {
-        console.log("Errors occurs: ", error)
+        console.log("Errors occurs: ", error);
+        return res.status(400).send({
+            success : false,
+            message : error.message
+        });
     }
 
 });
