@@ -58,12 +58,11 @@ router.post("/register", async(req, res) => {
 
             //send users data
             res.status(200).send({
-                name: savedUser.name,
-                contact: savedUser.contact,
-                userName: savedUser.userName,
-                coursesTaught: savedUser.coursesTaught,
+                success: true,
+                data: savedUser,
                 message : "User registered successfully"
             });
+            //message for server-side
             console.log("User registered successfully");
         } catch (error) {
         console.error("Error occurs:", error);
