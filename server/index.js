@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import teacherRouter from "./routers/teacherRouter.js"
+import teacherRouter from "./routers/router.js";
 import connectMongoDB from "./modules/connection.js";
 import dotenv from "dotenv";
 

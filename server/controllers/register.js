@@ -1,14 +1,14 @@
 import express from "express";
-import Teacher from "../models/schemas/teacher.js"
+import User from "../models/schemas/user.js"
 import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-// teacher for register
+// user for register
 router.post("/register", async(req, res) => {
     try {
-        // receive  username and password from teacher
-        const { userName, password} = req.body;
+        // receive  username and password from user
+        const { userName, password } = req.body;
 
         // Check if userName is provided
         if (!userName) {
@@ -18,41 +18,44 @@ router.post("/register", async(req, res) => {
             });
         }
         
-        //check  if the teacher already exist  
-        const existingTeacher = await Teacher.findOne({userName: userName});
+        //check  if the user already exist  
+        const existingUser = await User.findOne({userName: userName});
 
         //if taecher is already exist send message
-        if(existingTeacher){
+        if(existingUser){
             res.status(400).send({
                 err_code:"USER_ALREADY_EXIST",
                 message:"User already exist",
             });
             return;
         }
+        try {
+            //user password bcrypt 
+            const salt = await bcrypt.genSalt(10);
+            const hasedPassword = await bcrypt.hash(password, salt);
 
-         //teacher password bcrypt 
-        const salt = await bcrypt.genSalt(10);
-        const hasedPassword = await bcrypt.hash(password, salt);
+            //register & create new user 
+            const newUser = new User({
+                userName,
+                password: hasedPassword,
+            });
 
-        //register & create new teacher 
-        const newTeacher = new Teacher({
-            userName,
-            password: hasedPassword,
-        });
+            //save new user in database
+            const savedUser = await newUser.save();
 
-        //save new teacher in database
-        const savedTeacher = await newTeacher.save();
-
-        //send teachers data
-        res.status(200).send({
-            name: savedTeacher.name,
-            contact: savedTeacher.contact,
-            userName: savedTeacher.userName,
-            coursesTaught: savedTeacher.coursesTaught
-        });
-        console.log("User registered successfully")
+            //send users data
+            res.status(200).send({
+                name: savedUser.name,
+                contact: savedUser.contact,
+                userName: savedUser.userName,
+                coursesTaught: savedUser.coursesTaught
+            });
+            console.log("User registered successfully");
+        } catch (error) {
+        console.error("Error occurs:", error);
+    }
     } catch (error) {
-        console.log("errors occurs: ", error)
+        console.log("Errors occurs: ", error)
     }
 
 });

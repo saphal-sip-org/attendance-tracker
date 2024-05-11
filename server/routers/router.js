@@ -9,6 +9,6 @@ router.use("/", registerRouter);
 router.use("/", loginRouter);
 router.use("/", newStudentRouter);
 
-//exporting teacher router
+//exporting router
 export default router;
 export {router};
