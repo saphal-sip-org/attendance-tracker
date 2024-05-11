@@ -61,7 +61,8 @@ router.post("/register", async(req, res) => {
                 name: savedUser.name,
                 contact: savedUser.contact,
                 userName: savedUser.userName,
-                coursesTaught: savedUser.coursesTaught
+                coursesTaught: savedUser.coursesTaught,
+                message : "User registered successfully"
             });
             console.log("User registered successfully");
         } catch (error) {
