@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
     name: {
@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     coursesTaught: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Course"
     },
     role : {
