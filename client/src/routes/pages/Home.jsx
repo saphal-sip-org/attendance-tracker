@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Sidebar from '../../components/navbar/Sidebar';
+import Dashboard from '../../components/navbar/Dashboard';
 
 function Home() {
+  const [sidebarToogle, setSidebarToogle] = useState(false)
   return (
-    <div>
-      Home
+    <div className='flex'>
+      <Sidebar sidebarToogle= {sidebarToogle} />
+      <Dashboard  
+        sidebarToogle = {sidebarToogle}
+        setSidebarToogle={setSidebarToogle}/>
     </div>
   )
 }
