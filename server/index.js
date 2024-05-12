@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
-import teacherRouter from "./routers/router.js";
-import connectMongoDB from "./modules/connection.js";
 import dotenv from "dotenv";
+import connectMongoDB from "./modules/connection.js";
+import authRouter from "./routers/authRouter.js";
+import adminRouter from "./routers/adminRouter.js";
 
 const app = express();
 
@@ -21,10 +22,14 @@ connectMongoDB(URL);
 
 
 
-async function main() {
+function main() {
 
-    // api teacher router
-    app.use("/api", teacherRouter);
+    // api router
+    //auth router
+    app.use("/api", authRouter);
+    //admin router
+    app.use("/api/admin", adminRouter);
+
     
     //listening at the port
     app.listen(PORT, () => console.log("Server listen at port", PORT));
