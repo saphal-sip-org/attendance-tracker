@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaCog, FaHome} from 'react-icons/fa'
+import {FaBell, FaCog, FaHome} from 'react-icons/fa'
 import { BsCalendar4Week } from "react-icons/bs";
 import { PiStudent } from "react-icons/pi";
 import { FaChalkboardTeacher } from "react-icons/fa";
@@ -10,7 +10,7 @@ const Sidebar = ({sidebarToogle}) => {
     console.log(sidebarToogle)
 
   return (
-    <div className={`${sidebarToogle? "w-32" : "w-64"} bg-gray-800 fixed h-full px-4 py-2`}>
+    <div className={`${sidebarToogle? " w-32 " : "w-64"} bg-gray-800 fixed h-full px-4 py-2`}>
         <div className= 'my-2 mb-4'>
             <h1 className={`${sidebarToogle? "text-lg" : "text-3xl"} text-white font-bold`}>Attendence</h1>
         </div>
@@ -54,6 +54,12 @@ const Sidebar = ({sidebarToogle}) => {
                 <NavLink href="" className={`${sidebarToogle? "flex flex-col justify-start  gap-2 text-sm" : ""} flex items-center`}>
                     <FaCog className ="inline-block w-6 h-6 mr-2 mt-2"></FaCog>
                     <h5 className=' mt-3'>Setting</h5>
+                </NavLink>
+            </li>
+            <li className='mb-2 rounded hover:shadow hover:bg-blue-500 py-2 sm:hidden'>
+                <NavLink href="" className={`${sidebarToogle? "flex flex-col justify-start  gap-2 text-sm" : ""} flex items-center`}>
+                    <FaBell className ="inline-block w-6 h-6 mr-2 mt-2"></FaBell>
+                    <h5 className=' mt-3'>Notifiaction</h5>
                 </NavLink>
             </li>
 
