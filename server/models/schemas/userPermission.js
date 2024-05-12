@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const permissionSchema = new mongoose.Schema({
+const userPermissionSchema = new mongoose.Schema({
     user_id : {
         type : mongoose.Schema.Types.ObjectId,
         required : true,
@@ -12,5 +12,5 @@ const permissionSchema = new mongoose.Schema({
     }]
 })
 
-export const Permission = mongoose.model("Permission", permissionSchema);
-export default Permission;
+export const UserPermission = mongoose.model("UserPermission", userPermissionSchema);
+export default UserPermission;
