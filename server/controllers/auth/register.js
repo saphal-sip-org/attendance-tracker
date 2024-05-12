@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../models/schemas/user.js"
+import User from "../../models/schemas/user.js"
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
 

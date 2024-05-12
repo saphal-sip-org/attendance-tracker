@@ -1,11 +1,11 @@
 import express from "express";
 import Jwt  from "jsonwebtoken";
-import User from "../models/schemas/user.js"
+import User from "../../models/schemas/user.js"
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
 
-//connection to the router
+//connection to the route
 const router = express.Router();
 
 //connect .env data

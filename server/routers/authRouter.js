@@ -1,8 +1,8 @@
 import express from "express";
-import registerRouter  from "../controllers/register.js"
-import loginRouter from "../controllers/login.js";
+import registerRouter  from "../controllers/auth/register.js"
+import loginRouter from "../controllers/auth/login.js";
 import newStudentRouter from "../controllers/newStudent.js"
-import {registerValidator, loginValidator} from "../helpers/validator.js";
+import {registerValidator, loginValidator} from "../helpers/authValidator.js";
 
 const router = express.Router();
 
