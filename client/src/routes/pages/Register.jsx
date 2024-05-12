@@ -27,7 +27,7 @@ function Register() {
           <div className='border-b-2
             border-gray-300'></div>
         </div>
-        <Input inputchangeHandler={e => setName(e.target.value)} inputValue={Name} type={true} label={"UserName"} />
+        <Input inputchangeHandler={e => setName(e.target.value)} inputValue={Name} type={true} label={"Name"} />
         <Input inputchangeHandler={e => setUserName(e.target.value)} inputValue={userName} type={true} label={"UserName"} />
         <div className='flex flex-col gap-1'>
           <Input inputchangeHandler={e => setPassword(e.target.value)} inputValue={password} type={false} label={"Password"} />
