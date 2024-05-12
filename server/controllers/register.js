@@ -6,7 +6,7 @@ import { validationResult } from "express-validator";
 const router = express.Router();
 
 // user for register
-router.post("/register", async(req, res) => {
+router.post("/", async(req, res) => {
     try {
         // check for error validation
         const errors = validationResult(req);
@@ -26,6 +26,7 @@ router.post("/register", async(req, res) => {
         // Check if userName is provided
         if (!userName) {
             return res.status(400).send({
+                success: false,
                 err_code: "USER_NAME_REQUIRED",
                 message: "User name is required",
             });
@@ -37,6 +38,7 @@ router.post("/register", async(req, res) => {
         //if taecher is already exist send message
         if(existingUser){
             res.status(400).send({
+                success: false,
                 err_code:"USER_ALREADY_EXIST",
                 message:"User already exist",
             });
