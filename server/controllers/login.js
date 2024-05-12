@@ -66,7 +66,8 @@ router.post("/", async (req, res) => {
                 name: User.name,
                 contact: User.contact,
                 userName: User.userName,
-                coursesTaught: User.coursesTaught
+                coursesTaught: User.coursesTaught,
+                role: user.role
             };
 
             //assign user data in jwt token
