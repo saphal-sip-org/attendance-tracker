@@ -42,8 +42,7 @@ router.post("/", async (req, res) => {
                 message: "User doesn't exists"
             })
             return;
-        }
-
+        };
 
         //assign password in variable
         const userPassword = await user.password;
@@ -63,22 +62,29 @@ router.post("/", async (req, res) => {
         try {
 
             const savedUser = { 
-                name: User.name,
-                contact: User.contact,
-                userName: User.userName,
-                coursesTaught: User.coursesTaught,
+                _id: user._id,
+                name: user.name,
+                contact: user.contact,
+                userName: user.userName,
+                password: user.password,
+                coursesTaught: user.coursesTaught,
                 role: user.role
             };
 
-            //assign user data in jwt token
-            const token = Jwt.sign(savedUser, process.env.USER_JWT_TOKEN, {expiresIn: "2h" });
+            const generateToken = async(user) => {
+                //assign user data in jwt token
+                const token = Jwt.sign(user, process.env.USER_JWT_TOKEN, {expiresIn: "24h" });
+                return token;
+            }
+            //access jwt token
+            const accessToken = await generateToken({user: savedUser});
 
             //send information to the user to notify
             res.status(200).send({
                 success: true,
-                data: savedUser,
+                accessToken: accessToken,
                 message : "Login successfully",
-                token,
+                data: savedUser,
                 tokenType : "Bearer"
             });
 
