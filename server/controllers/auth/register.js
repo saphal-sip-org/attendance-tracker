@@ -21,7 +21,7 @@ router.post("/", async(req, res) => {
         };
 
         // receive  username and password from user
-        const { userName, password } = req.body;
+        const { userName, password, name, contact } = req.body;
 
         // Check if userName is provided
         if (!userName) {
@@ -51,8 +51,10 @@ router.post("/", async(req, res) => {
 
             //register & create new user 
             const newUser = new User({
+                name,
                 userName,
                 password: hasedPassword,
+                contact
             });
 
             //save new user in database
@@ -64,6 +66,7 @@ router.post("/", async(req, res) => {
                 data: savedUser,
                 message : "User registered successfully"
             });
+            
             //message for server-side
             console.log("User registered successfully");
         } catch (error) {
