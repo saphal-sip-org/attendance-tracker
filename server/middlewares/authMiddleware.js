@@ -10,7 +10,7 @@ export const verifyToken = async(req, res, next) => {
 
     //check if token not provide through some error message
     if (!userToken) {
-        return res.status(403).send({
+        return res.status(404).send({
             success : false,
             err_code : "TOKEN_REQUIRED",
             message : "Token is required for Authentication !!!"
@@ -31,7 +31,7 @@ export const verifyToken = async(req, res, next) => {
         return res.status(403).send({
             success : false,
             err_code : "INVALID_TOKEN",
-            message : error.message
+            message : "Invalid Token !!!"
         });
     };
 
