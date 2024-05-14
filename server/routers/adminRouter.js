@@ -6,15 +6,16 @@ import deletePermission from "../controllers/admin/deletePermissionController.js
 import updatePermission from "../controllers/admin/updatePermissionController.js";
 
 import verifyToken from "../middlewares/authMiddleware.js";
+import onlyAdminAccess from "../middlewares/adminMiddleware.js";
 
 //router for controller (path)
 const router = express.Router();
 
 //permission router
-router.use("/add-permission", verifyToken, addPermissionValidator, addPermission);
-router.use("/get-permissions", verifyToken, getPermission);
-router.use("/delete-permission", verifyToken, deletePermissionValidator, deletePermission);
-router.use("/update-permission", verifyToken, updatePermissionValidator, updatePermission);
+router.use("/add-permission", verifyToken, onlyAdminAccess, addPermissionValidator, addPermission);
+router.use("/get-permissions", verifyToken, onlyAdminAccess, getPermission);
+router.use("/delete-permission", verifyToken, onlyAdminAccess, deletePermissionValidator, deletePermission);
+router.use("/update-permission", verifyToken, onlyAdminAccess, updatePermissionValidator, updatePermission);
 
 
 
