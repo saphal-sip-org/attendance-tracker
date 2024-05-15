@@ -1,22 +1,29 @@
 import mongoose from "mongoose";
 
 const courseSchema = mongoose.Schema({
-    title: {
-        type: String
+    course_className : {
+        type : String,
+        required : true
     },
-    shortName:  {
-        type: String
+    title : {
+        type : String,
+        required : true
     },
-    courseDuration:  {
-        type: TimeRanges
+    courseType :  {
+        type : String,
+        required : true
     },
-    teacher: { 
-        type: Schema.Types.ObjectId,
-        ref: 'Teacher' 
+    courseDuration :  {
+        type : String,
+        required : true
     },
-    students: [{ 
-        type: Schema.Types.ObjectId,
-        ref: 'Student' 
+    teacher : { 
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Teacher' 
+    },
+    students : [{ 
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'Student' 
     }]
 });
 
