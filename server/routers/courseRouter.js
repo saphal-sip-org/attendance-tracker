@@ -9,10 +9,13 @@ import deleteCourse from "../controllers/common/course/deleteCourseController.js
 
 const router = express.Router();
 
+//course router
 router.use("/add-course", verifyToken, addCourseValidator, addCourse);
 router.use("/get-course", verifyToken, getCourse);
 router.use("/update-course", verifyToken, updateCourseValidator, updateCourse);
 router.use("/delete-course", verifyToken, deleteCourseValidator, deleteCourse);
+
+//attendance router
 
 
 export { router };
