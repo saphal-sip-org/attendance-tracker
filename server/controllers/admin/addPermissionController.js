@@ -24,7 +24,12 @@ router.post("/", async (req, res) =>{
         const { permission_name } = req.body;
 
         //check if permission_name exists
-        const permissionIsExists = await PermissionModel.findOne({permission_name : permission_name});
+        const permissionIsExists = await PermissionModel.findOne({
+            permission_name : {
+                $regex : permission_name,
+                $options : "i"
+            } //check if same name with camelcase exists 
+        });
 
         //if exists throw error message
         if(permissionIsExists){

@@ -4,7 +4,7 @@ import PermissionModel from "../../models/schemas/permissionModel.js";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.put("/", async (req, res) => {
     try {
 
         // check for error validation
@@ -37,7 +37,10 @@ router.post("/", async (req, res) => {
         //check whether if permission_name is assigned to other except this permission_name
         const isNameAssigned = await PermissionModel.findOne({
             _id : { $ne : id },
-            permission_name: permission_name //key value pair same
+            permission_name : {
+                $regex : permission_name,
+                $options : "i"
+            }  //check if same name with camelcase exists 
         });
 
         //if then throw some error message

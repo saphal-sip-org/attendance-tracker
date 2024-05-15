@@ -6,7 +6,7 @@ import deletePermission from "../controllers/admin/deletePermissionController.js
 import updatePermission from "../controllers/admin/updatePermissionController.js";
 
 import verifyToken from "../middlewares/authMiddleware.js";
-import onlyAdminAccess from "../middlewares/adminMiddleware.js";
+import onlyAdminAccess from "../middlewares/adminUserMiddleware.js";
 
 //router for controller (path)
 const router = express.Router();

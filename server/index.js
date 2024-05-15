@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectMongoDB from "./modules/connection.js";
 import authRouter from "./routers/authRouter.js";
 import adminRouter from "./routers/adminRouter.js";
+import commonRouter from "./routers/courseRouter.js";
 
 const app = express();
 
@@ -30,6 +31,9 @@ function main() {
     app.use("/api", authRouter);
     //admin router
     app.use("/api/admin", adminRouter);
+    //common router
+    app.use("/api", commonRouter);
+
 
     
     //listening at the port
