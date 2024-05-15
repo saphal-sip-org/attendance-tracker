@@ -14,8 +14,9 @@ const attendanceSchema = mongoose.Schema({
         ref : "Teacher"
     },
     date: {
-        type : () => Date.now(),
-        required : true
+        type: Date,
+        default: Date.now,
+        required: true
     },
     isPresent: {
         type : Boolean,

@@ -4,7 +4,9 @@ import dotenv from "dotenv";
 import connectMongoDB from "./modules/connection.js";
 import authRouter from "./routers/authRouter.js";
 import adminRouter from "./routers/adminRouter.js";
-import commonRouter from "./routers/courseRouter.js";
+import courseRouter from "./routers/courseRouter.js";
+import studentRouter from "./routers/studentRouter.js";
+
 
 const app = express();
 
@@ -32,7 +34,10 @@ function main() {
     //admin router
     app.use("/api/admin", adminRouter);
     //common router
-    app.use("/api", commonRouter);
+    app.use("/api", courseRouter);
+    //student router
+    app.use("/api", studentRouter);
+
 
 
     

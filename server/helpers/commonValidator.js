@@ -27,5 +27,36 @@ export const updateCourseValidator = [
 
 ] ;
 
-export default { addCourseValidator, deleteCourseValidator, updateCourseValidator };
+
+//attendance Validation
+
+export const addAttendanceValidator = [
+
+    //check username, password ... validation for register
+    check("date").not().isEmpty().withMessage("Date is required"),
+    check("date").not().isDate().withMessage("Date should be in Date Form"),
+    check("isPresent").not().isEmpty().withMessage("Absent || Present is required"),
+    check("isPresent").not().isBoolean().withMessage("Absent || Present should be Boolean")
+
+] ;
+
+export const deleteAttendanceValidator = [
+
+    //check date ... validation for delete
+    check("date").not().isEmpty().withMessage("Date is required"),
+
+] ;
+
+export const updateAttendanceValidator = [
+
+    //check id ... validation for update
+    check("date").not().isEmpty().withMessage("Date is required"),
+    check("date").not().isDate().withMessage("Date should be in Date Form"),
+    check("isPresent").not().isEmpty().withMessage("Absent || Present is required"),
+    check("isPresent").not().isBoolean().withMessage("Absent || Present should be Boolean")
+
+] ;
+
+
+export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator };
 
