@@ -15,7 +15,7 @@ export const addCourseValidator = [
 export const deleteCourseValidator = [
 
     //check id ... validation for delete
-    check("id").not().isEmpty().withMessage("ID is required"),
+    check("id").not().isEmpty().withMessage("ID is required")
 
 ] ;
 
@@ -105,10 +105,14 @@ export const updateStudentValidator = [
 ];
 export const deleteStudentValidator = [
 
-    //check if username is type email
-    check("userName").isEmail().withMessage("Please Enter Valid_Email").normalizeEmail({gmail_remove_dots: true}),
+    //check id ... validation for delete
+    check("id").not().isEmpty().withMessage("ID is required")
+];
+export const getEachStudentValidator = [
 
+    //check id ... validation for delete
+    check("id").not().isEmpty().withMessage("ID is required")
 ];
 
-export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator, addStudentValidator, updateStudentValidator, deleteStudentValidator };
+export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator, addStudentValidator, updateStudentValidator, deleteStudentValidator, getEachStudentValidator };
 
