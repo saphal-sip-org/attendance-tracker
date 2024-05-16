@@ -58,5 +58,57 @@ export const updateAttendanceValidator = [
 ] ;
 
 
-export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator };
+//validator for student
+
+//student add validator
+export const addStudentValidator = [
+
+    //check if username is empty
+    check("userName").not().isEmpty().withMessage("Student_UserName is required"),
+
+    //check if username is type email
+    check("userName").isEmail().withMessage("Please Enter Valid_Email").normalizeEmail({gmail_remove_dots: true}),
+
+    //check if name is empty
+    check("name").not().isEmpty().withMessage("Student_Name is required"),
+
+    //check if address is empty
+    check("address").not().isEmpty().withMessage("Student_Address is required"),
+
+    //check if username is empty
+    check("contactNumber").not().isEmpty().withMessage("Contact_Number is required"),
+
+    // Allow optional spaces, dashes, or parentheses around the country code and the rest of the phone number
+    check('contactNumber').matches(/^(\+\d{1,3}\s?|\(\d{1,3}\)|\d{1,3})[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/, 'i') .withMessage('Invalid phone number format. Please enter a valid international phone number.')
+
+];
+
+export const updateStudentValidator = [
+     //check if username is empty
+    check("userName").not().isEmpty().withMessage("Student_UserName is required"),
+
+    //check if username is type email
+    check("userName").isEmail().withMessage("Please Enter Valid_Email").normalizeEmail({gmail_remove_dots: true}),
+
+    //check if name is empty
+    check("name").not().isEmpty().withMessage("Student_Name is required"),
+
+    //check if address is empty
+    check("address").not().isEmpty().withMessage("Student_Address is required"),
+
+    //check if username is empty
+    check("contactNumber").not().isEmpty().withMessage("Contact_Number is required"),
+
+    // Allow optional spaces, dashes, or parentheses around the country code and the rest of the phone number
+    check('contactNumber').matches(/^(\+\d{1,3}\s?|\(\d{1,3}\)|\d{1,3})[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/, 'i') .withMessage('Invalid phone number format. Please enter a valid international phone number.')
+
+];
+export const deleteStudentValidator = [
+
+    //check if username is type email
+    check("userName").isEmail().withMessage("Please Enter Valid_Email").normalizeEmail({gmail_remove_dots: true}),
+
+];
+
+export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator, addStudentValidator, updateStudentValidator, deleteStudentValidator };
 
