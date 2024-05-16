@@ -14,7 +14,7 @@ router.put("/", async (req, res) =>{
 
         //if error then throw message
         if(!errors.isEmpty()) {
-            return res.status(200).send({
+            return res.status(401).send({
                 success : false,
                 message : "Errors",
                 errors : errors.array()
@@ -54,7 +54,7 @@ router.put("/", async (req, res) =>{
             return res.status(404).send({
                 success : false,
                 err_code : "COURSE_CLASSNAME_ALREADY_ASSIGNED",
-                message : "Course ClassName Another !!!"
+                message : "Course ClassName assigned another !!!"
             })
         }
         
@@ -71,7 +71,7 @@ router.put("/", async (req, res) =>{
         res.status(201).send({
             success : true,
             message : "Course Updated Successfully !",
-            // data : updateData
+            data : updateData
         })
         
     } catch (error) {

@@ -15,7 +15,7 @@ router.get("/", async (req, res) =>{
             message : "Course Fetch Successfully !",
             data : course_classes
         });
-        console.log(course_classes)
+
     } catch (error) {
 
         console.log("Errors occurs: ", error);

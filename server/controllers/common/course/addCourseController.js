@@ -14,7 +14,7 @@ router.post("/", async (req, res) =>{
 
         //if error then throw message
         if(!errors.isEmpty()) {
-            return res.status(200).send({
+            return res.status(401).send({
                 success : false,
                 message : "Errors",
                 errors : errors.array()
@@ -58,8 +58,6 @@ router.post("/", async (req, res) =>{
         })
         
     } catch (error) {
-
-        console.log("Errors occurs: ", error);
         return res.status(400).send({
             success : false,
             message : error.message

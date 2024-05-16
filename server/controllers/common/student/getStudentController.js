@@ -1,27 +1,28 @@
 import express from "express";
-
+import Student from "../../../models/schemas/student.js";
 
 const router = express.Router();
 
 //create/add new student to the list
 router.post("/", async (req, res) => {
     try {
-        //receive student data from body where teacher request for new student
-        const { } = req.body;
 
-          // Check if userName is provided
-          if (!userName || !name || !contact) {
-            return res.status(400).send({
-                err_code: "STUDENT_INPUTS_REQUIRED",
-                message: "Student inputs are required",
-            });
-        }
+        //receive all student lists
+       const studentDetails = await Student.find({});
 
-
-
+        res.status(201).send({
+            success : true,
+            message : "Students_Detail Fetch Successfully !",
+            data : studentDetails
+        });
         
     } catch (error) {
-        console.error("errors occurs", error);
+
+        console.log("Errors occurs: ", error);
+        return res.status(400).send({
+            success : false,
+            message : error.message
+        });
     }
 })
 
