@@ -13,7 +13,7 @@ const studentSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    contactNumber : {
+    contact : {
         type : String,
         required : true
     },

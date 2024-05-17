@@ -21,6 +21,10 @@ const attendanceSchema = mongoose.Schema({
     isPresent: {
         type : Boolean,
         required : true
+    },
+    holiday: {
+        type: Boolean,
+        default: false
     }
 })
 

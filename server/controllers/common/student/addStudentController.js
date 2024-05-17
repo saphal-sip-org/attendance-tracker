@@ -24,6 +24,12 @@ router.post("/", async (req, res) => {
         //receive student data from body where teacher request for new student
         const { userName, name, address, contact } = req.body;
 
+        console.log(userName)
+        console.log(name)
+        console.log(contact)
+        console.log(address)
+
+
         // Check if userName is provided
         if (!userName || !name || !contact || !address) {
             return res.status(404).send({

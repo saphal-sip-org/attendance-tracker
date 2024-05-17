@@ -4,7 +4,7 @@ import Student from "../../../models/schemas/student.js";
 const router = express.Router();
 
 //create/add new student to the list
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
 
         //receive all student lists

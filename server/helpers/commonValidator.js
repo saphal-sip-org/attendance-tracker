@@ -32,18 +32,19 @@ export const updateCourseValidator = [
 
 export const addAttendanceValidator = [
 
-    //check username, password ... validation for register
+    //check date and attendance ... to add new attendance
     check("date").not().isEmpty().withMessage("Date is required"),
-    check("date").not().isDate().withMessage("Date should be in Date Form"),
+    check("date").not().isDate().withMessage("Invalid date format"),
     check("isPresent").not().isEmpty().withMessage("Absent || Present is required"),
-    check("isPresent").not().isBoolean().withMessage("Absent || Present should be Boolean")
+    check("isPresent").isBoolean().withMessage("Absent || Present should be Boolean")
 
 ] ;
 
-export const deleteAttendanceValidator = [
+export const setHolidayValidator = [
 
     //check date ... validation for delete
-    check("date").not().isEmpty().withMessage("Date is required"),
+    check("course").notEmpty().withMessage("Course ID is required"),
+    check("date").not().isDate().withMessage("Invalid date format")
 
 ] ;
 
@@ -51,7 +52,7 @@ export const updateAttendanceValidator = [
 
     //check id ... validation for update
     check("date").not().isEmpty().withMessage("Date is required"),
-    check("date").not().isDate().withMessage("Date should be in Date Form"),
+    check("date").not().isDate().withMessage("Invalid date format"),
     check("isPresent").not().isEmpty().withMessage("Absent || Present is required"),
     check("isPresent").not().isBoolean().withMessage("Absent || Present should be Boolean")
 
@@ -76,10 +77,10 @@ export const addStudentValidator = [
     check("address").not().isEmpty().withMessage("Student_Address is required"),
 
     //check if username is empty
-    check("contactNumber").not().isEmpty().withMessage("Contact_Number is required"),
+    check("contact").not().isEmpty().withMessage("Contact_Number is required"),
 
     // Allow optional spaces, dashes, or parentheses around the country code and the rest of the phone number
-    check('contactNumber').matches(/^(\+\d{1,3}\s?|\(\d{1,3}\)|\d{1,3})[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/, 'i') .withMessage('Invalid phone number format. Please enter a valid international phone number.')
+    check('contact').matches(/^\+\d{1,3}(?:[- \.]?\d{3,4})+$/) .withMessage('Invalid phone number format. Please enter a valid international phone number.')
 
 ];
 
@@ -97,10 +98,10 @@ export const updateStudentValidator = [
     check("address").not().isEmpty().withMessage("Student_Address is required"),
 
     //check if username is empty
-    check("contactNumber").not().isEmpty().withMessage("Contact_Number is required"),
+    check("contact").not().isEmpty().withMessage("Contact_Number is required"),
 
     // Allow optional spaces, dashes, or parentheses around the country code and the rest of the phone number
-    check('contactNumber').matches(/^(\+\d{1,3}\s?|\(\d{1,3}\)|\d{1,3})[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/, 'i') .withMessage('Invalid phone number format. Please enter a valid international phone number.')
+    check('contact').matches(/^\+\d{1,3}(?:[- \.]?\d{3,4})+$/) .withMessage('Invalid phone number format. Please enter a valid international phone number.')
 
 ];
 export const deleteStudentValidator = [
@@ -110,9 +111,10 @@ export const deleteStudentValidator = [
 ];
 export const getEachStudentValidator = [
 
-    //check id ... validation for delete
+    //check id ... validation 
     check("id").not().isEmpty().withMessage("ID is required")
 ];
 
-export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, deleteAttendanceValidator, updateAttendanceValidator, addStudentValidator, updateStudentValidator, deleteStudentValidator, getEachStudentValidator };
+
+export default { addCourseValidator, deleteCourseValidator, updateCourseValidator, addAttendanceValidator, setHolidayValidator, updateAttendanceValidator, addStudentValidator, updateStudentValidator, deleteStudentValidator, getEachStudentValidator };
 
