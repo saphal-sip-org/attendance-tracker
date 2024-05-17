@@ -1,11 +1,12 @@
 import express from "express";
 import { validationResult } from "express-validator";
+import Student from "../../../models/schemas/student.js";
 
 
 const router = express.Router();
 
 //create/add new student to the list
-router.post("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     try {
         
         // check for error validation

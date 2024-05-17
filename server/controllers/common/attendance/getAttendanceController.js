@@ -1,25 +1,26 @@
 import express from "express";
+import Attendance from "../../../models/schemas/attendance.js";
 
 
 const router = express.Router();
 
 //create/add new student to the list
-router.post("/", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
-        //receive student data from body where teacher request for new student
-        const { } = req.body;
+       //receive all attendance lists
+       const attendance = await Attendance.find({});
 
-          // Check if userName is provided
-          if (!userName || !name || !contact) {
-            return res.status(400).send({
-                err_code: "ATTENDANCE_INPUTS_REQUIRED",
-                message: "Attendance inputs are required",
-            });
-        }
-
+        res.status(201).send({
+            success : true,
+            message : "Course Fetch Successfully !",
+            data : attendance
+        });
         
     } catch (error) {
-        console.error("errors occurs", error);
+        return res.status(400).send({
+            success : false,
+            message : error.message
+        });
     }
 })
 

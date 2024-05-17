@@ -5,7 +5,7 @@ import { validationResult } from "express-validator";
 const router = express.Router();
 
 //create/add new student to the list
-router.post("/", async (req, res) => {
+router.put("/", async (req, res) => {
     try {
 
         // check for error validation
@@ -54,7 +54,7 @@ router.post("/", async (req, res) => {
         }
 
         //update student value
-        const updatedStudent = await Student.findByIdAndUpdate({ id : _id },{
+        const updatedStudent = await Student.findByIdAndUpdate(id,{
             $set : {
                 userName,
                 name,

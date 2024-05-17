@@ -6,6 +6,8 @@ import authRouter from "./routers/authRouter.js";
 import adminRouter from "./routers/adminRouter.js";
 import courseRouter from "./routers/courseRouter.js";
 import studentRouter from "./routers/studentRouter.js";
+import attendanceRouter from "./routers/attendanceRouter.js";
+
 
 
 const app = express();
@@ -37,6 +39,9 @@ function main() {
     app.use("/api", courseRouter);
     //student router
     app.use("/api", studentRouter);
+    //attendance router
+    app.use("/api", attendanceRouter);
+
 
 
 
