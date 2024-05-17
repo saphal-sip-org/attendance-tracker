@@ -1,4 +1,4 @@
-export const onlyAdminAccess = async(req, res) => {
+export const onlyAdminAccess = async(req, res, next) => {
     try {
           //check if role is admin(1).if not throw error message
         if(req.user.role != 1){
@@ -16,7 +16,7 @@ export const onlyAdminAccess = async(req, res) => {
         })
     }
     //process to next work/move forward
-    return next();
+    next();
 }
 
 export default onlyAdminAccess;

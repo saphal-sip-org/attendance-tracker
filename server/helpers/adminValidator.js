@@ -22,6 +22,13 @@ export const updatePermissionValidator = [
 
 ] ;
 
+export const storeRoleValidator = [
+
+    //check username, password ... validation for register
+    check("role_name").not().isEmpty().withMessage("Role_Name is required"),
+    check("value").not().isEmpty().withMessage("Value is required")
+
+] ;
 
 
-export default { addPermissionValidator, deletePermissionValidator, updatePermissionValidator };
+export default { addPermissionValidator, deletePermissionValidator, updatePermissionValidator, storeRoleValidator };
