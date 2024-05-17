@@ -60,7 +60,6 @@ router.post("/", async (req, res) =>{
             data : newPermission
         });
 
-        console.log("Permission added successfully");
     } catch (error) {
 
         console.log("Errors occurs: ", error);
