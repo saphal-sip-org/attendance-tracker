@@ -6,6 +6,7 @@ import authRouter from "./routers/authRouter.js";
 import adminRouter from "./routers/adminRouter.js";
 import courseRouter from "./routers/courseRouter.js";
 import studentRouter from "./routers/studentRouter.js";
+import teacherRouter from "./routers/teacherRouter.js";
 import attendanceRouter from "./routers/attendanceRouter.js";
 
 
@@ -26,8 +27,6 @@ const URL = process.env.MONGO_URL;
 //connecting Database
 connectMongoDB(URL);
 
-
-
 function main() {
 
     // api router
@@ -39,6 +38,8 @@ function main() {
     app.use("/api", courseRouter);
     //student router
     app.use("/api", studentRouter);
+    //teacher router
+    app.use("/api", teacherRouter);
     //attendance router
     app.use("/api", attendanceRouter);
 
