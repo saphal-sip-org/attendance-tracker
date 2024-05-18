@@ -1,18 +1,27 @@
 import mongoose from "mongoose";
 
 const teacherSchema = mongoose.Schema({
+    name : {
+        type : String,
+        required : true
+    },
     userName: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        type : String,
+        required : true
+    },
+    address : {
+        type : String,
+        required : true
     },
     contact: {
-        type: Number
+        type : String,
+        required : true
     },
     coursesTaught: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Course"
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Course"
     }
 })
 
-export const User = mongoose.model("User", userSchema);
-export default User;
+export const Teacher = mongoose.model("Teacher", teacherSchema);
+export default Teacher;
