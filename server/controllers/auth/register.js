@@ -2,6 +2,8 @@ import express from "express";
 import User from "../../models/schemas/user.js"
 import bcrypt from "bcrypt";
 import { validationResult } from "express-validator";
+import UserPermission from "../../models/schemas/userPermission.js";
+import PermissionModel from "../../models/schemas/permissionModel.js";
 
 const router = express.Router();
 
@@ -59,6 +61,30 @@ router.post("/", async(req, res) => {
 
             //save new user in database
             const savedUser = await newUser.save();
+
+            //assign default permissions
+            const defaultPermissions = await PermissionModel.find({
+                is_default : 1
+            });
+
+            //assign all the default permission to the user
+            if(defaultPermissions.length > 0) {
+                const permissionArray = [];
+                defaultPermissions.forEach(permission => {
+                    permissionArray.push({
+                        permission_name : permission.permission_name,
+                        permission_value : [0,1,2,3]
+                    })
+                })
+                //add the permission to the user
+                console.log(permissionArray)
+                const userPermission =  new UserPermission({
+                    user_id : savedUser._id,
+                    permission : permissionArray
+                })
+                console.log(userPermission)
+                await userPermission.save();
+            }
 
             //send users data
             res.status(200).send({
