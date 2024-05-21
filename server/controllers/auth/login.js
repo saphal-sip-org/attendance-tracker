@@ -76,15 +76,53 @@ router.post("/", async (req, res) => {
                 const token = Jwt.sign(user, process.env.USER_JWT_TOKEN, {expiresIn: "24h" });
                 return token;
             }
+
             //access jwt token
             const accessToken = await generateToken({user: savedUser});
+
+            //get user data with all permissions
+            const result =await User.aggregate([
+                {
+                    $match : { userName : savedUser.userName}
+                },
+                { 
+                    $lookup : {
+                        from : "userpermissions",
+                        localField : "_id",
+                        foreignField : "user_id",
+                        as : "permissions"
+                    }
+                },
+                {
+                    $project : {
+                        _id : 1,
+                        name : 1,
+                        userName : 1,
+                        role : 1,
+                        permissions : {
+                            $cond : {
+                                if : { $isArray : "$permissions" },
+                                then : { $arrayElemAt : ["$permissions", 0]},
+                                else : null
+                            }
+                        }
+                    }
+                },
+                {
+                    $addFields : {
+                        "permission" : {
+                            "permissions" : "$permissions.permissions"
+                        }
+                    }
+                }
+            ]);
 
             //send information to the user to notify
             res.status(200).send({
                 success: true,
                 accessToken: accessToken,
                 message : "Login successfully",
-                data: savedUser,
+                data: result,
                 tokenType : "Bearer"
             });
 
