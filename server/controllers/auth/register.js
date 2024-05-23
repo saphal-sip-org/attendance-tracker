@@ -62,29 +62,52 @@ router.post("/", async(req, res) => {
             //save new user in database
             const savedUser = await newUser.save();
 
-            //assign default permissions
-            const defaultPermissions = await PermissionModel.find({
-                is_default : 1
-            });
-
-            //assign all the default permission to the user
-            if(defaultPermissions.length > 0) {
+            //add permission to user if req exists
+            if(req.body.permission != undefined && req.body.permission.length > 0){
+                const addPermission = req.body.permissions;
                 const permissionArray = [];
-                defaultPermissions.forEach(permission => {
-                    permissionArray.push({
-                        permission_name : permission.permission_name,
-                        permission_value : [0,1,2,3]
-                    })
+                await Promise.all (
+                    addPermission.map(
+                    async(permission) => {
+                        const permissionData = await PermissionModel.findOne({ _id : permission._id });
+                        permissionArray.push({
+                            permission_name : permissionData.permission_name,
+                            permission_value : permission.value
+                        })
+                    }
+                ))
+                const user_permission = new UserPermission({
+                    user_id : userData._id,
+                    permissions : permissionArray
                 })
-                //add the permission to the user
-                console.log(permissionArray)
-                const userPermission =  new UserPermission({
-                    user_id : savedUser._id,
-                    permission : permissionArray
-                })
-                console.log(userPermission)
-                await userPermission.save();
+                await user_permission.save();
             }
+
+
+
+            // //assign default permissions
+            // const defaultPermissions = await PermissionModel.find({
+            //     is_default : 1
+            // });
+
+            // //assign all the default permission to the user
+            // if(defaultPermissions.length > 0) {
+            //     const permissionArray = [];
+            //     defaultPermissions.forEach(permission => {
+            //         permissionArray.push({
+            //             permission_name : permission.permission_name,
+            //             permission_value : [0,1,2,3]
+            //         })
+            //     })
+            //     //add the permission to the user
+            //     console.log(permissionArray)
+            //     const userPermission =  new UserPermission({
+            //         user_id : savedUser._id,
+            //         permission : permissionArray
+            //     })
+            //     console.log(userPermission)
+            //     await userPermission.save();
+            // }
 
             //send users data
             res.status(200).send({
