@@ -27,6 +27,7 @@ import User from "../../../models/schemas/user";
 import bcrypt from "bcrypt";
 import randomstring from "randomstring";
 import express from "express";
+import sendMail from "../../../helpers/mailer";
 
 const router = express.Router();
 
@@ -86,6 +87,26 @@ router.use("/", async (req, res) => {
         const userData = await user.save();
 
         console.log(password);
+
+        const content = `
+        <p>Hi <b>${userData.name},</b> your account is created, below is your details.</P>
+        <table>
+        <tr>
+        <th>name</th>
+        <td>${userData.name}</td>
+        </tr>
+        <tr>
+        <th>userName</th>
+        <td>${userData.userName}</td>
+        </tr>
+        <tr>
+        <th>password</th>
+        <td>${password}</td>
+        </tr>
+        </table>
+        `
+
+        sendMail(userData.userName, "Account Created", content)
 
         res.status(201).send({
             success : true,
