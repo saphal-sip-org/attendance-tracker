@@ -10,6 +10,8 @@ router.get("/", async (req, res) => {
         //receive all Teacher lists
        const teacherDetails = await Teacher.find({});
 
+       
+
         res.status(201).send({
             success : true,
             message : "Teachers_Detail Fetch Successfully !",
